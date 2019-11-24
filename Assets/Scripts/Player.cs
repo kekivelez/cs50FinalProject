@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     [SerializeField] public float MoveSpeed = 10f;
     [SerializeField] public float Padding = 1f;
     [SerializeField] public float ProjectileSpeed = 10f;
+    [SerializeField] public float RateOfFire = 0.05f;
     [SerializeField] public GameObject LaserPrefab;
 
     private float _xMin;
@@ -18,6 +19,8 @@ public class Player : MonoBehaviour
     private float _yMin;
     private float _yMax;
 
+
+    private Coroutine _firingCoroutine;
 
     // Start is called before the first frame update
     void Start()
@@ -78,13 +81,33 @@ public class Player : MonoBehaviour
         // If the key associated with the input setting labeled Fire1 is pressed
         if (Input.GetButtonDown("Fire1"))
         {
-            // Create an instance of the laser prefab object (as a game object) and set its position
-            var laser = Instantiate(LaserPrefab, 
-                                    transform.position, // Offset
-                                    Quaternion.identity); // No rotation
+            _firingCoroutine = StartCoroutine(ContinuousFire());
+        }
 
+        if (Input.GetButtonUp("Fire1"))
+        {
+            StopCoroutine(_firingCoroutine);
+        }
+    }
+
+    /// <summary>
+    /// Co-routine that enables continuous fire
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator ContinuousFire()
+    {
+        while (true)
+        {
+            // Create an instance of the laser prefab object (as a game object) and set its position
+            var laser = Instantiate(original: LaserPrefab,
+                position: transform.position, // Offset
+                rotation: Quaternion.identity); // No rotation
+
+            // Set the speed at which the projectile travels
             laser.GetComponent<Rigidbody2D>().velocity = new Vector2(x: 0, y: ProjectileSpeed);
 
+            // Yield execution of this call for RateOfFire seconds
+            yield return new WaitForSeconds(RateOfFire);
         }
     }
 }
