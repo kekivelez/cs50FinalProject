@@ -8,11 +8,11 @@ using UnityEngine.Experimental.Rendering;
 public class Player : MonoBehaviour
 {
     #region Config Parameters
-    [SerializeField] public float MoveSpeed = 10f;
-    [SerializeField] public float Padding = 1f;
-    [SerializeField] public float ProjectileSpeed = 10f;
-    [SerializeField] public float RateOfFire = 0.05f;
-    [SerializeField] public GameObject LaserPrefab;
+    [SerializeField] private float _moveSpeed = 10f;
+    [SerializeField] private float _padding = 1f;
+    [SerializeField] private float _projectileSpeed = 10f;
+    [SerializeField] private float _rateOfFire = 0.05f;
+    [SerializeField] private GameObject _laserPrefab;
     #endregion
 
 
@@ -49,8 +49,8 @@ public class Player : MonoBehaviour
     private void Move()
     {
         // Calculate the position of the player in the x axis
-        var deltaX = Input.GetAxis("Horizontal") * Time.deltaTime * MoveSpeed;
-        var deltaY = Input.GetAxis("Vertical") * Time.deltaTime * MoveSpeed;
+        var deltaX = Input.GetAxis("Horizontal") * Time.deltaTime * _moveSpeed;
+        var deltaY = Input.GetAxis("Vertical") * Time.deltaTime * _moveSpeed;
 
         var newXPos = Mathf.Clamp(transform.position.x + deltaX, _xMin, _xMax);
         var newYPos = Mathf.Clamp(transform.position.y + deltaY, _yMin, _yMax);
@@ -67,16 +67,16 @@ public class Player : MonoBehaviour
         var gameCamera = Camera.main;
 
         // Determine the x point at the (left) edge of the map
-        _xMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).x + Padding;
+        _xMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).x + _padding;
 
         // Determine the x point at the (right) edge of the map
-        _xMax = gameCamera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x - Padding;
+        _xMax = gameCamera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x - _padding;
 
         // Determine the y point at the (bottom) edge of the map
-        _yMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y + Padding;
+        _yMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y + _padding;
 
         // Determine the y point at the (top) edge of the map
-        _yMax = gameCamera.ViewportToWorldPoint(new Vector3(0, 1, 0)).y - Padding;
+        _yMax = gameCamera.ViewportToWorldPoint(new Vector3(0, 1, 0)).y - _padding;
 
     }
 
@@ -106,15 +106,15 @@ public class Player : MonoBehaviour
         while (true)
         {
             // Create an instance of the laser prefab object (as a game object) and set its position
-            var laser = Instantiate(original: LaserPrefab,
+            var laser = Instantiate(original: _laserPrefab,
                 position: transform.position, // Offset
                 rotation: Quaternion.identity); // No rotation
 
             // Set the speed at which the projectile travels
-            laser.GetComponent<Rigidbody2D>().velocity = new Vector2(x: 0, y: ProjectileSpeed);
+            laser.GetComponent<Rigidbody2D>().velocity = new Vector2(x: 0, y: _projectileSpeed);
 
             // Yield execution of this call for RateOfFire seconds
-            yield return new WaitForSeconds(RateOfFire);
+            yield return new WaitForSeconds(_rateOfFire);
         }
     }
     #endregion

@@ -7,12 +7,12 @@ using UnityEngine;
 public class WaveConfig : ScriptableObject
 {
     #region Config Parameters
-    [SerializeField] public GameObject enemyPrefab;
-    [SerializeField] public GameObject pathPrefab;
-    [SerializeField] public float spawnSpeed = 0.5f;
-    [SerializeField] public float spawnSpeedOffset = 0.3f;
-    [SerializeField] public float moveSpeed = 2f;
-    [SerializeField] public int enemyCount = 5;
+    [SerializeField] private GameObject _enemyPrefab;
+    [SerializeField] private GameObject _pathPrefab;
+    [SerializeField] private float _spawnSpeed = 0.5f;
+    [SerializeField] private float _spawnSpeedOffset = 0.3f;
+    [SerializeField] private float _moveSpeed = 2f;
+    [SerializeField] private int _enemyCount = 5;
 
     #endregion
 
@@ -20,28 +20,28 @@ public class WaveConfig : ScriptableObject
     /// <summary>
     /// The enemy object
     /// </summary>
-    public GameObject EnemyPrefab => this.enemyPrefab;
+    public GameObject EnemyPrefab => this._enemyPrefab;
 
     /// <summary>
     /// The speed at which the members of the wave spawn
     /// </summary>
-    public float SpawnSpeed => this.spawnSpeed;
+    public float SpawnSpeed => this._spawnSpeed;
 
     /// <summary>
     /// Adds a displacement to the spawn speed to allow a sense of irregularity
     /// between spawns
     /// </summary>
-    public float SpawnSpeedOffset => this.spawnSpeedOffset;
+    public float SpawnSpeedOffset => this._spawnSpeedOffset;
 
     /// <summary>
     /// The movement speed of the enemies in the wave
     /// </summary>
-    public float MoveSpeed => this.moveSpeed;
+    public float MoveSpeed => this._moveSpeed;
 
     /// <summary>
     /// How many enemies per wave
     /// </summary>
-    public int EnemyCount => this.enemyCount;
+    public int EnemyCount => this._enemyCount;
 
     /// <summary>
     /// Gets a list of waypoints based on the path object
@@ -51,7 +51,7 @@ public class WaveConfig : ScriptableObject
     {
         var waveWaypoints = new List<Transform>();
 
-        foreach (Transform waypointTransform in pathPrefab.transform)
+        foreach (Transform waypointTransform in _pathPrefab.transform)
         {
             waveWaypoints.Add(waypointTransform);
         }
