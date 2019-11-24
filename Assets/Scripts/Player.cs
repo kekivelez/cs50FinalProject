@@ -7,20 +7,25 @@ using UnityEngine.Experimental.Rendering;
 
 public class Player : MonoBehaviour
 {
-    // Config Parameters
+    #region Config Parameters
     [SerializeField] public float MoveSpeed = 10f;
     [SerializeField] public float Padding = 1f;
     [SerializeField] public float ProjectileSpeed = 10f;
     [SerializeField] public float RateOfFire = 0.05f;
     [SerializeField] public GameObject LaserPrefab;
+    #endregion
 
+
+    #region Instance Variables
     private float _xMin;
     private float _xMax;
     private float _yMin;
     private float _yMax;
+    #endregion
 
-
+    #region Co-routines
     private Coroutine _firingCoroutine;
+    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +41,8 @@ public class Player : MonoBehaviour
         Fire();
     }
 
+
+    #region Private Members
     /// <summary>
     /// Defines how the player is going to move
     /// </summary>
@@ -110,4 +117,5 @@ public class Player : MonoBehaviour
             yield return new WaitForSeconds(RateOfFire);
         }
     }
+    #endregion
 }
