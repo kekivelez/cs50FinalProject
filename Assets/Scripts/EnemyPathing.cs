@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class EnemyPathing : MonoBehaviour
 {
-    #region Config Parameters
-    [SerializeField] public WaveConfig WaveConfig;
-    [SerializeField] public List<Transform> Waypoints;
-    [SerializeField] public float Speed = 2f;
-    #endregion
 
     #region Instance Variables
     private int _waypointIndex = 0;
+    private List<Transform> Waypoints;
+    #endregion
+
+    #region Properties
+    public WaveConfig WaveConfig { private get; set; }
     #endregion
 
 
@@ -38,7 +38,7 @@ public class EnemyPathing : MonoBehaviour
             var targetPosition = Waypoints[_waypointIndex].transform.position;
 
             // How much has been/can be moved this frame
-            var travelDistance = Speed * Time.deltaTime;
+            var travelDistance = WaveConfig.MoveSpeed * Time.deltaTime;
 
             // Move
             this.transform.position = Vector2.MoveTowards(transform.position, targetPosition, travelDistance);
