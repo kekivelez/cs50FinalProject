@@ -10,12 +10,18 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private int firstWave = 0;
     [SerializeField] private int bossWave;
 
+
+    private System.Random randomGen;
     #endregion
 
     // Start is called before the first frame update
     IEnumerator Start()
     {
+        //Set the boss wave as the last in the list
         bossWave = waveConfigs.Count - 1;
+
+        // Create a random number generator and seed it with UTC time
+        randomGen = new System.Random((int)System.DateTime.UtcNow.Ticks);
         do
         {
             yield return StartCoroutine(SpawnAllWaves());
@@ -48,7 +54,10 @@ public class EnemySpawner : MonoBehaviour
             var currentWave = waveConfigs[i];
             yield return StartCoroutine(SpawnEnemiesInWave(currentWave));
         }
-        yield return StartCoroutine(SpawnEnemiesInWave(waveConfigs[bossWave]));
+
+        // approx 30% chance for boss to spawn after all waves are done
+        bool spawnBoss = randomGen.Next(0, 10) <= 3 ? true : false;
+        if (spawnBoss) { yield return StartCoroutine(SpawnEnemiesInWave(waveConfigs[bossWave])); }
 
     }
     #endregion
