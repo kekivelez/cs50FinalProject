@@ -93,13 +93,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f033818e12113d498f606af7b678912, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 200
-  _moveSpeed: 10
-  _padding: 1
-  _laserPrefab: {fileID: 2117082856329605573, guid: 50778101e8531f34f8a521361ebd5065,
+  health: 200
+  moveSpeed: 10
+  padding: 1
+  laserPrefab: {fileID: 2117082856329605573, guid: 50778101e8531f34f8a521361ebd5065,
     type: 3}
-  _projectileSpeed: 10
-  _rateOfFire: 0.05
+  projectileSpeed: 10
+  rateOfFire: 0.05
 --- !u!60 &1853302825252266083
 PolygonCollider2D:
   m_ObjectHideFlags: 0
