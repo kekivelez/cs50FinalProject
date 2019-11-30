@@ -164,6 +164,8 @@ public class Player : MonoBehaviour
     /// </summary>
     private void Death()
     {
+        FindObjectOfType<Level>().LoadGameOver();
+
         // Destroy the unit
         Destroy(gameObject);
 
