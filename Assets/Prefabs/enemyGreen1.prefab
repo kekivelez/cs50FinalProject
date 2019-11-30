@@ -106,12 +106,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24119674e992070478d69dbb07628e97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 100
-  _shotTimer: 0
-  _minTimeBetweenShots: 0.2
-  _maxTimeBetweenShots: 3
-  _projectileSpeed: 10
-  _projectile: {fileID: 2613000318207014361, guid: 1c1b2d85c9fb5a148a7fb81e43b3c298,
+  health: 100
+  shotTimer: 0
+  minTimeBetweenShots: 0.2
+  maxTimeBetweenShots: 3
+  projectileSpeed: 10
+  projectile: {fileID: 2613000318207014361, guid: 1c1b2d85c9fb5a148a7fb81e43b3c298,
     type: 3}
 --- !u!58 &5467306471034521004
 CircleCollider2D:
