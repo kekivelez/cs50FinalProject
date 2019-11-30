@@ -5,14 +5,14 @@ using UnityEngine;
 public class DamageDealer : MonoBehaviour
 {
     #region Config Parameters
-    [SerializeField] private int _damage = 100;
+    [SerializeField] private int damage = 100;
 
     #endregion
 
-    #region Public Members
+    #region Properties
     public int Damage
     {
-        get { return _damage; }
+        get { return damage; }
     }
 
     public void Hit()

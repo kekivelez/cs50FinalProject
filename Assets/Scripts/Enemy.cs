@@ -7,12 +7,12 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     #region Config Parameters
-    [SerializeField] private float _health = 100f;
-    [SerializeField] private float _shotTimer;
-    [SerializeField] private float _minTimeBetweenShots = 0.2f;
-    [SerializeField] private float _maxTimeBetweenShots = 3f;
-    [SerializeField] private float _projectileSpeed = 10f;
-    [SerializeField] private GameObject _projectile;
+    [SerializeField] private float health = 100f;
+    [SerializeField] private float shotTimer;
+    [SerializeField] private float minTimeBetweenShots = 0.2f;
+    [SerializeField] private float maxTimeBetweenShots = 3f;
+    [SerializeField] private float projectileSpeed = 10f;
+    [SerializeField] private GameObject projectile;
 
     #endregion
 
@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         // Set our timer to a random value between a range
-        _shotTimer = UnityEngine.Random.Range(_minTimeBetweenShots, _maxTimeBetweenShots);
+        shotTimer = UnityEngine.Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
     }
 
     // Update is called once per frame
@@ -43,10 +43,10 @@ public class Enemy : MonoBehaviour
 
     private void CalculateDamage(DamageDealer damageDealer)
     {
-        _health -= damageDealer.Damage;
+        health -= damageDealer.Damage;
         damageDealer.Hit();
 
-        if (_health <= 0)
+        if (health <= 0)
         {
             Destroy(gameObject);
         }
@@ -57,14 +57,14 @@ public class Enemy : MonoBehaviour
     private void CalculateShotTime()
     {
         // Decrease the counter by a frame
-        _shotTimer -= Time.deltaTime;
+        shotTimer -= Time.deltaTime;
 
-        if (_shotTimer <= 0)
+        if (shotTimer <= 0)
         {
             Fire();
 
             // Reset timer
-            _shotTimer = UnityEngine.Random.Range(_minTimeBetweenShots, _maxTimeBetweenShots);
+            shotTimer = UnityEngine.Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
         }
     }
 
@@ -73,11 +73,11 @@ public class Enemy : MonoBehaviour
     /// </summary>
     private void Fire()
     {
-        GameObject firedObject = Instantiate(original: _projectile,
+        GameObject firedObject = Instantiate(original: projectile,
                                              position: transform.position,
                                              rotation: Quaternion.identity) as GameObject;
 
-        firedObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -_projectileSpeed);
+        firedObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -projectileSpeed);
     }
 
 

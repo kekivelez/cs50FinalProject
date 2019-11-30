@@ -5,9 +5,9 @@ using UnityEngine;
 public class EnemyPathing : MonoBehaviour
 {
 
-    #region Instance Variables
-    private int _waypointIndex = 0;
-    private List<Transform> Waypoints;
+    #region Fields
+    private int waypointIndex = 0;
+    private List<Transform> waypoints;
     #endregion
 
     #region Properties
@@ -18,9 +18,9 @@ public class EnemyPathing : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Waypoints = WaveConfig.GetWaypoints();
+        waypoints = WaveConfig.GetWaypoints();
         //Start at waypoint position 0
-        this.transform.position = Waypoints[_waypointIndex].transform.position;
+        this.transform.position = waypoints[waypointIndex].transform.position;
     }
 
     // Update is called once per frame
@@ -32,10 +32,10 @@ public class EnemyPathing : MonoBehaviour
     #region Private Members
     private void Move()
     {
-        if (_waypointIndex < Waypoints.Count)
+        if (waypointIndex < waypoints.Count)
         {
             // Target waypoint
-            var targetPosition = Waypoints[_waypointIndex].transform.position;
+            var targetPosition = waypoints[waypointIndex].transform.position;
 
             // How much has been/can be moved this frame
             var travelDistance = WaveConfig.MoveSpeed * Time.deltaTime;
@@ -46,7 +46,7 @@ public class EnemyPathing : MonoBehaviour
             // If we reach waypoint change target
             if (this.transform.position == targetPosition)
             {
-                _waypointIndex++;
+                waypointIndex++;
             }
         }
         else

@@ -5,9 +5,9 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     #region Config Parameters
-    [SerializeField] private List<WaveConfig> _waveConfigs;
-    [SerializeField] private bool _looping = false;
-    [SerializeField] private int _firstWave = 0;
+    [SerializeField] private List<WaveConfig> waveConfigs;
+    [SerializeField] private bool looping = false;
+    [SerializeField] private int firstWave = 0;
 
     #endregion
 
@@ -17,7 +17,7 @@ public class EnemySpawner : MonoBehaviour
         do
         {
             yield return StartCoroutine(SpawnAllWaves()); 
-        } while (_looping);
+        } while (looping);
     }
 
     #region Private Members
@@ -40,9 +40,9 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SpawnAllWaves()
     {
-        for (int i = _firstWave; i < _waveConfigs.Count; i++)
+        for (int i = firstWave; i < waveConfigs.Count; i++)
         {
-            var currentWave = _waveConfigs[i];
+            var currentWave = waveConfigs[i];
             yield return StartCoroutine(SpawnEnemiesInWave(currentWave));
         }
     }
