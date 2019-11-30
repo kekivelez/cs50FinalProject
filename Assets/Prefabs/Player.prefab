@@ -100,6 +100,13 @@ MonoBehaviour:
     type: 3}
   projectileSpeed: 10
   rateOfFire: 0.05
+  laserSound: {fileID: 8300000, guid: bd9912c4f8a5a6840853ac1d47d96b14, type: 3}
+  laserSoundVolume: 0.15
+  deathVfx: {fileID: 2939492719188133894, guid: 716e6edfdb5cee14eae98d047e68cd22,
+    type: 3}
+  explosionDuration: 1
+  deathSound: {fileID: 8300000, guid: 5cf6280885ec1f34d8b223e5ecab2b8c, type: 3}
+  deathSoundVolume: 1
 --- !u!60 &1853302825252266083
 PolygonCollider2D:
   m_ObjectHideFlags: 0

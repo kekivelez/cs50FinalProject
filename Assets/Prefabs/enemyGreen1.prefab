@@ -111,11 +111,15 @@ MonoBehaviour:
   minTimeBetweenShots: 0.2
   maxTimeBetweenShots: 3
   projectileSpeed: 10
-  explosionDuration: 1
   projectile: {fileID: 2613000318207014361, guid: 1c1b2d85c9fb5a148a7fb81e43b3c298,
     type: 3}
+  laserSound: {fileID: 8300000, guid: 2b72c2bccb52de24ab7064fa8bf45231, type: 3}
+  laserSoundVolume: 0.5
   deathVfx: {fileID: 6000155528131271643, guid: 11aad3f243d209642bd0f888cd5304b3,
     type: 3}
+  explosionDuration: 1
+  deathSoundVolume: 0.7
+  deathSound: {fileID: 8300000, guid: 0c6846a6560e24244bddd200950e8bce, type: 3}
 --- !u!58 &5467306471034521004
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -6,15 +6,25 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    #region Config Parameters
+    #region Fields
+    [Header("Enemy Attributes")]
     [SerializeField] private float health = 100f;
+
+    [Header("Shooting Atributes")]
     [SerializeField] private float shotTimer;
     [SerializeField] private float minTimeBetweenShots = 0.2f;
     [SerializeField] private float maxTimeBetweenShots = 3f;
     [SerializeField] private float projectileSpeed = 10f;
-    [SerializeField] private float explosionDuration = 1f;
     [SerializeField] private GameObject projectile;
+    [SerializeField] private AudioClip laserSound;
+    [SerializeField] [Range(0, 1)] private float laserSoundVolume = 0.5f;
+
+
+    [Header("Death Attributes")]
     [SerializeField] private GameObject deathVfx;
+    [SerializeField] private float explosionDuration = 1f;
+    [SerializeField] [Range(0,1)] private float deathSoundVolume = 0.7f;
+    [SerializeField] private AudioClip deathSound;
 
     #endregion
 
@@ -61,6 +71,12 @@ public class Enemy : MonoBehaviour
                                              rotation: Quaternion.identity) as GameObject;
 
         firedObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -projectileSpeed);
+
+        // Laser Sound
+        AudioSource.PlayClipAtPoint(clip: laserSound,
+                                position: Camera.main.transform.position,
+                                  volume: laserSoundVolume);
+
     }
 
     /// <summary>
@@ -103,7 +119,13 @@ public class Enemy : MonoBehaviour
                                            position: transform.position,
                                            rotation: transform.rotation);
 
+        // Destroy the explosion game object after some time has elapsed
         Destroy(explosion, explosionDuration);
+
+        // Play death sound
+        AudioSource.PlayClipAtPoint(clip: deathSound,
+                                position: Camera.main.transform.position,
+                                  volume: deathSoundVolume);
     }
 
     #endregion
