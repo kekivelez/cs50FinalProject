@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 6670788281048107853}
   - component: {fileID: 7208665814529138259}
   - component: {fileID: 884683458681711012}
-  m_Layer: 0
+  - component: {fileID: 2818310677868748417}
+  - component: {fileID: 5467306471034521004}
+  m_Layer: 9
   m_Name: enemyGreen1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,3 +94,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 089d8a9c19367bb42b5754c34b4a1c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2818310677868748417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8044989437859585689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24119674e992070478d69dbb07628e97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 100
+  _shotTimer: 0
+  _minTimeBetweenShots: 0.2
+  _maxTimeBetweenShots: 3
+  _projectileSpeed: 10
+  _projectile: {fileID: 2613000318207014361, guid: 1c1b2d85c9fb5a148a7fb81e43b3c298,
+    type: 3}
+--- !u!58 &5467306471034521004
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8044989437859585689}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.009858251, y: 0.01774478}
+  serializedVersion: 2
+  m_Radius: 0.3782465

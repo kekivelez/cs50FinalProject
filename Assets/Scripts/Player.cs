@@ -8,11 +8,15 @@ using UnityEngine.Experimental.Rendering;
 public class Player : MonoBehaviour
 {
     #region Config Parameters
+    [Header("Player")]
+    [SerializeField] private int _health = 200;
     [SerializeField] private float _moveSpeed = 10f;
     [SerializeField] private float _padding = 1f;
+
+    [Header("Projectile")]
+    [SerializeField] private GameObject _laserPrefab;
     [SerializeField] private float _projectileSpeed = 10f;
     [SerializeField] private float _rateOfFire = 0.05f;
-    [SerializeField] private GameObject _laserPrefab;
     #endregion
 
 
@@ -117,5 +121,26 @@ public class Player : MonoBehaviour
             yield return new WaitForSeconds(_rateOfFire);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        DamageDealer damageDealer = collision.gameObject.GetComponent<DamageDealer>();
+
+        // Null Check
+        if (!damageDealer) return;
+
+        CalculateDamage(damageDealer);
+    }
+
+    private void CalculateDamage(DamageDealer damageDealer)
+    {
+        _health -= damageDealer.Damage;
+        damageDealer.Hit();
+        if (_health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     #endregion
 }
