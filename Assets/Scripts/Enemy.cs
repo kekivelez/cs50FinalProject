@@ -9,9 +9,9 @@ public class Enemy : MonoBehaviour
     #region Fields
     [Header("Enemy Attributes")]
     [SerializeField] private float health = 100f;
+    [SerializeField] private int scoreValue = 150;
 
     [Header("Shooting Atributes")]
-    [SerializeField] private float shotTimer;
     [SerializeField] private float minTimeBetweenShots = 0.2f;
     [SerializeField] private float maxTimeBetweenShots = 3f;
     [SerializeField] private float projectileSpeed = 10f;
@@ -25,6 +25,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float explosionDuration = 1f;
     [SerializeField] [Range(0,1)] private float deathSoundVolume = 0.7f;
     [SerializeField] private AudioClip deathSound;
+
+    private float shotTimer;
+
 
     #endregion
 
@@ -111,6 +114,9 @@ public class Enemy : MonoBehaviour
     /// </summary>
     private void Death()
     {
+        //Increment Score
+        FindObjectOfType<GameSession>().AddScore(this.scoreValue);
+
         // Destroy the unit
         Destroy(gameObject);
 

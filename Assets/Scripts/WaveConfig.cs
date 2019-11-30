@@ -10,7 +10,6 @@ public class WaveConfig : ScriptableObject
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private GameObject pathPrefab;
     [SerializeField] private float spawnSpeed = 0.5f;
-    [SerializeField] private float spawnSpeedOffset = 0.3f;
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private int enemyCount = 5;
 
@@ -26,12 +25,6 @@ public class WaveConfig : ScriptableObject
     /// The speed at which the members of the wave spawn
     /// </summary>
     public float SpawnSpeed => this.spawnSpeed;
-
-    /// <summary>
-    /// Adds a displacement to the spawn speed to allow a sense of irregularity
-    /// between spawns
-    /// </summary>
-    public float SpawnSpeedOffset => this.spawnSpeedOffset;
 
     /// <summary>
     /// The movement speed of the enemies in the wave

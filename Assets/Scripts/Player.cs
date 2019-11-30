@@ -33,6 +33,13 @@ public class Player : MonoBehaviour
     private float yMax;
     #endregion
 
+    #region Properties
+    public int Health
+    {
+        get { return health; }
+        private set { this.health = value; }
+    }
+    #endregion
 
     #region Co-routines
     private Coroutine firingCoroutine;
@@ -150,11 +157,12 @@ public class Player : MonoBehaviour
     /// </summary>
     private void CalculateDamage(DamageDealer damageDealer)
     {
-        health -= damageDealer.Damage;
+        Health -= damageDealer.Damage;
         damageDealer.Hit();
 
-        if (health <= 0)
+        if (Health <= 0)
         {
+            Health = 0;
             Death();
         }
     }
@@ -184,4 +192,5 @@ public class Player : MonoBehaviour
     }
 
     #endregion
+
 }

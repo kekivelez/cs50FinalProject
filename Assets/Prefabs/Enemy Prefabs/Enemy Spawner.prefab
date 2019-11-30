@@ -43,6 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4dd08d179853b643afd8208ce882982, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveConfigs: []
+  waveConfigs:
+  - {fileID: 11400000, guid: 2ec05616a29d21c499c483cef95f5437, type: 2}
+  - {fileID: 11400000, guid: 028695419269e7943905e3427022ac81, type: 2}
+  - {fileID: 11400000, guid: 685010b4d54cb2945a1b8efc3220fb7a, type: 2}
+  - {fileID: 11400000, guid: 891202271cc14de4994b5f3f3850b1b7, type: 2}
+  - {fileID: 11400000, guid: 928aacc2bdc99fa42b97924dc4ad81d5, type: 2}
   looping: 1
   firstWave: 0
+  bossWave: 0

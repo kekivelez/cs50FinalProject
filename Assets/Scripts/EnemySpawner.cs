@@ -8,15 +8,17 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private List<WaveConfig> waveConfigs;
     [SerializeField] private bool looping = false;
     [SerializeField] private int firstWave = 0;
+    [SerializeField] private int bossWave;
 
     #endregion
 
     // Start is called before the first frame update
     IEnumerator Start()
     {
+        bossWave = waveConfigs.Count - 1;
         do
         {
-            yield return StartCoroutine(SpawnAllWaves()); 
+            yield return StartCoroutine(SpawnAllWaves());
         } while (looping);
     }
 
@@ -40,11 +42,14 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SpawnAllWaves()
     {
-        for (int i = firstWave; i < waveConfigs.Count; i++)
+        int wavesBeforeBoss = Random.Range(2, waveConfigs.Count - 1);
+        for (int i = firstWave; i < wavesBeforeBoss; i++)
         {
             var currentWave = waveConfigs[i];
             yield return StartCoroutine(SpawnEnemiesInWave(currentWave));
         }
+        yield return StartCoroutine(SpawnEnemiesInWave(waveConfigs[bossWave]));
+
     }
     #endregion
 }

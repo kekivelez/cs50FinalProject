@@ -99,7 +99,7 @@ MonoBehaviour:
   laserPrefab: {fileID: 2117082856329605573, guid: 50778101e8531f34f8a521361ebd5065,
     type: 3}
   projectileSpeed: 10
-  rateOfFire: 0.05
+  rateOfFire: 0.15
   laserSound: {fileID: 8300000, guid: bd9912c4f8a5a6840853ac1d47d96b14, type: 3}
   laserSoundVolume: 0.15
   deathVfx: {fileID: 2939492719188133894, guid: 716e6edfdb5cee14eae98d047e68cd22,
