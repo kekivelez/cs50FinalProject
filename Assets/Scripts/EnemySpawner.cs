@@ -29,7 +29,11 @@ public class EnemySpawner : MonoBehaviour
     }
 
     #region Private Members
-
+    /// <summary>
+    /// Coroutine called to spawn all the enemies in a given wave
+    /// </summary>
+    /// <param name="waveConfig">The wave configuration containing the enemy data</param>
+    /// <returns></returns>
     private IEnumerator SpawnEnemiesInWave(WaveConfig waveConfig)
     {
         for (int i = 0; i < waveConfig.EnemyCount; i++)
@@ -46,8 +50,13 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Coroutine called to spawn all defined enemy waves
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator SpawnAllWaves()
     {
+        // Randomly determine how many waves will happen before the boss wave can spawn (min 2 waves)
         int wavesBeforeBoss = Random.Range(2, waveConfigs.Count - 1);
         for (int i = firstWave; i < wavesBeforeBoss; i++)
         {

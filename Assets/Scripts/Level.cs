@@ -25,7 +25,6 @@ public class Level : MonoBehaviour
     public void LoadGameOver()
     {
         StartCoroutine(DelayGameOver());
-       
     }
 
     public void QuitGame()

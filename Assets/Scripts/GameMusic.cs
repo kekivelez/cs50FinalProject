@@ -15,6 +15,10 @@ public class GameMusic : MonoBehaviour
 
     #region Private Members
 
+    /// <summary>
+    /// Creates a Singleton of the game music object so that it doesn't restart playing
+    /// every new scene
+    /// </summary>
     private void CreateSingleton()
     { 
         if (FindObjectsOfType(GetType()).Length > 1)

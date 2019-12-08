@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DamageDealer : MonoBehaviour
 {
-    #region Config Parameters
+    #region Fields
     [SerializeField] private int damage = 100;
 
     #endregion
@@ -14,10 +14,13 @@ public class DamageDealer : MonoBehaviour
     {
         get { return damage; }
     }
+    #endregion
 
+    /// <summary>
+    /// Destroy the Game object that was hit by this Damage Dealer
+    /// </summary>
     public void Hit()
     {
         Destroy(gameObject);
     }
-    #endregion
 }

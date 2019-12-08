@@ -2,18 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Cause the background to scroll by controlling the offset of the y axis
+/// </summary>
 public class BackgroundScroller : MonoBehaviour
 {
-    #region Config Parameters
+    #region Fields
     [SerializeField] private float scrollSpeed = 0.02f;
 
-    #endregion
-
-    #region Fields
     private Material backgroundMaterial;
     private Vector2 scrollOffset;
-
-
     #endregion
     // Start is called before the first frame update
     void Start()
@@ -25,6 +23,7 @@ public class BackgroundScroller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Progress the background scroller
         backgroundMaterial.mainTextureOffset += scrollOffset * Time.deltaTime;
     }
 }

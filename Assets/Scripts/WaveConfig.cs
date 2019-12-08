@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Enemy Wave Config")]
 public class WaveConfig : ScriptableObject
 {
-    #region Config Parameters
+    #region Fields
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private GameObject pathPrefab;
     [SerializeField] private float spawnSpeed = 0.5f;

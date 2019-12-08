@@ -28,7 +28,6 @@ public class Enemy : MonoBehaviour
 
     private float shotTimer;
 
-
     #endregion
 
     // Start is called before the first frame update

@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Defines a single instance of a game session from start to game over
+/// </summary>
 public class GameSession : MonoBehaviour
 {
 
     #region Fields
     private int score;
-
-
-
     #endregion
 
     #region Properties
@@ -27,6 +27,9 @@ public class GameSession : MonoBehaviour
 
     #region Private Members
 
+    /// <summary>
+    /// Creates a singleton of the GameSession object
+    /// </summary>
     private void CreateSingleton()
     {
         int numberOfGameSessions = FindObjectsOfType<GameSession>().Length;

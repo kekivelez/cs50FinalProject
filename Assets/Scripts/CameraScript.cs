@@ -11,12 +11,8 @@ public class CameraScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Force screen to the correct resolution when building standalone
         Screen.SetResolution(1080, 1920, false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

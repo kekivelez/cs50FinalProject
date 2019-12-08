@@ -109,6 +109,7 @@ public class Player : MonoBehaviour
             firingCoroutine = StartCoroutine(ContinuousFire());
         }
 
+        // If the key associated with the input setting labeled Fire1 is released
         if (Input.GetButtonUp("Fire1"))
         {
             StopCoroutine(firingCoroutine);
@@ -142,6 +143,10 @@ public class Player : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Verify player collision with any object considered a Damage Dealer
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
         DamageDealer damageDealer = collision.gameObject.GetComponent<DamageDealer>();

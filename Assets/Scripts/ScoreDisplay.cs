@@ -24,6 +24,7 @@ public class ScoreDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Update the score display text
         scoreText.text = gameSession.Score.ToString();
     }
 }

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Upadates the Player health information visible on the screen
+/// </summary>
 public class HealthDisplay : MonoBehaviour
 {
 

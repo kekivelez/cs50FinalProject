@@ -30,6 +30,9 @@ public class EnemyPathing : MonoBehaviour
     }
 
     #region Private Members
+    /// <summary>
+    /// Determines how to travel from one waypoint to the next and destroys when finished traveling
+    /// </summary>
     private void Move()
     {
         if (waypointIndex < waypoints.Count)

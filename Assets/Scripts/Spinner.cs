@@ -6,7 +6,6 @@ public class Spinner : MonoBehaviour
 {
     #region Fields
     [SerializeField] private float rotationSpeed = 180f;
-
     #endregion
 
 
