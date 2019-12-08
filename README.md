@@ -13,7 +13,7 @@ For the versions available, see the [releases on this repository](https://github
 To run, unzip the folder and run SpaceShooter.exe
 
 ### Building from source
-Note: The version of unity may affect your ability to open the project and view/build the project and modify them using the inspector. Some familiarity with Unity is epected to be able to build from source.
+Note: The version of unity may affect your ability to open/build the project and view/modify the gameobjects/properties using the inspector. Some familiarity with Unity is expected to be able to build from source.
 
 * Download Unity (preferably version 2018.3.7f1)
 * Clone or download the source files from this repository.
